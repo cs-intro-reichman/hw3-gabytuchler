@@ -49,18 +49,46 @@ public class Algebra {
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		int result = 0;
+		if (x2==0 || x1==0){
+			return 0; }
+		if ((x2>0)&& (x1>0)){
 		for (int i=0; i<x2; i++){
-			result = plus(result, x1);
-		}
+			result = plus(result, x1);}}
+		if ((x2<0)&& (x1>0)|| (x2>0)&& (x1<0)){
+			for (int j=0; j>x2; j--){
+				result = minus(result, x1);}}
+		if ((x2<0)&& (x1<0)){
+			for (int k=0; k>x2; k--){
+				result = plus(result, minus(0, x1));}}
 		return result;
+
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
+		if (n == 0) { return 1;}
+		if (n<0){ return 0; }
+		
 		int result = 1;
+		boolean even = true;
+		boolean negative = x<0;
+		int number = n;
+		boolean needchange = false;
+		
+		while (number>=2){ 
+			number= minus(number, 2);}
+		
+		if (number==1){even = false;}
+
+		int base = x;
+		if (negative){base= minus(0, x);
+			if 	(even==false){needchange = true;}}
+
 		for(int i=0; i<n; i++){
-			result = times(result, x);
-		}
+			result = times(result, base);}
+		
+		if (needchange){
+			return minus(0, result);}
 		return result;
 	}
 
@@ -79,7 +107,7 @@ public class Algebra {
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
 		if (x2 == 0) {
-			return	x1;	}
+			return	0;	}
 		if (x2>x1) {
 			return	x1;	}
 		while (x1>=x2) {
@@ -93,6 +121,6 @@ public class Algebra {
 		int g = x;
 		while (Math.abs(g*g-x)>epsilon)
 			g = g - ( g*g - x ) / ( 2 * g );
-		return 0;
+		return g;
 	}	  	  
 }
