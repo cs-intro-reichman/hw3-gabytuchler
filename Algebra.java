@@ -53,14 +53,17 @@ public class Algebra {
 			return 0; }
 		if ((x2>0)&& (x1>0)){
 		for (int i=0; i<x2; i++){
-			result = plus(result, x1);}}
-		if ((x2<0)&& (x1>0)|| (x2>0)&& (x1<0)){
+			result = plus(result, x1);}
+		return result; }
+		if ((x2<0)&&(x1>0)|| (x2>0)&& (x1<0)){
 			for (int j=0; j>x2; j--){
-				result = minus(result, x1);}}
+				result = minus(result, x1);}
+			return result; }
 		if ((x2<0)&& (x1<0)){
 			for (int k=0; k>x2; k--){
-				result = plus(result, minus(0, x1));}}
-		return result;
+				result = plus(result, minus(0, x1));}
+			return result; }
+		return 0;
 
 	}
 
@@ -116,9 +119,26 @@ public class Algebra {
 	}	
 
 	// Returns the integer part of sqrt(x) 
-	public static int sqrt(int x) {
-		int y=0;
-		for (int i=0; times(y, y)<=x; i++);
-				return minus (y, 1);
-	}	  	  
+	//public static int sqrt(int x) {
+		//int y=0;
+		//for (int i=0; times(y, y)<=x; i++);
+		//		return minus (y, 1);
+	//}	  	  
+//}
+
+public static int sqrt(int x) {
+    if (x < 0) {
+        return 0; 
+    }
+    
+    int y = 0; 
+    
+    while (times(y, y) <= x) {
+        y++; 
+        
+       
+    }
+    
+    return minus(y, 1);
+}
 }
