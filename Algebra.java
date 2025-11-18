@@ -117,10 +117,8 @@ public class Algebra {
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-		int epsilon = 1;
-		int g = x;
-		while (Math.abs(g*g-x)>epsilon)
-			g = g - ( g*g - x ) / ( 2 * g );
-		return g;
+		int y=0;
+		for (int i=0; times(y, y)<=x; i++);
+				return minus (y, 1);
 	}	  	  
 }
